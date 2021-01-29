@@ -1,0 +1,78 @@
+Enter readConfigFile
+
+Connect to Data Base  SuccessFully
+CreateConnection  0
+connect  true
+Enter readNodesInfo 
+
+nodes count:  10
+
+listen on port: 5300 true
+init  "psp1-b1"
+init  "psp2-b1"
+init  "psp3-b1"
+init  "psp4-b1"
+init  "shaparak-b1"
+init  "b2-b1"
+init  "b3-b1"
+init  "b4-b1"
+init  "shetab-b1"
+getConfig()->nodeNumber:  4
+__staticvalue::getNodesInfo()  9 4 301 "b1" 5300
+
+__sharedmemory timerEvent  1  +++++++  "{\"amount\":1000,\"card_number\":\"1234567890123456\",\"destination\":\"b\",\"merchant_number\":\"56\",\"new_transaction\":false,\"node_id\":201,\"node_type\":1,\"receive_time\":1565635229102,\"response_time\":1565635229103,\"source\":\"a\",\"terminal_number\":\"1234\"}"
+Enter parseMessage 
+createNewTransaction  1
+completeFlow is_new_transaction  false 1 4
+__sharedmemory::releaseBuffer 
+
+__sharedmemory timerEvent  1  +++++++  "{\"amount\":1000,\"card_number\":\"1234567890123456\",\"destination\":\"b\",\"merchant_number\":\"56\",\"new_transaction\":false,\"node_id\":1,\"node_type\":2,\"receive_time\":1565635229102,\"response_time\":1565635229395,\"source\":\"a\",\"terminal_number\":\"1234\"}"
+Enter parseMessage 
+createNewTransaction  2
+completeFlow is_new_transaction  false 2 4
+__sharedmemory::releaseBuffer 
+
+__sharedmemory timerEvent  2  +++++++  "{\"amount\":1000,\"card_number\":\"1234567890123456\",\"destination\":\"b\",\"merchant_number\":\"56\",\"new_transaction\":true,\"node_id\":1,\"node_type\":3,\"receive_time\":1565635229102,\"response_time\":1565635230395,\"source\":\"a\",\"terminal_number\":\"1234\"}<<>>{\"amount\":1000,\"card_number\":\"1234567890123456\",\"destination\":\"b\",\"merchant_number\":\"56\",\"new_transaction\":false,\"node_id\":1,\"node_type\":3,\"receive_time\":1565635229102,\"response_time\":1565635230395,\"source\":\"a\",\"terminal_number\":\"1234\"}"
+Enter parseMessage 
+createNewTransaction  3
+completeFlow is_new_transaction  true 3 4
+------------ dispatch ----------------
+__sharedmemory::bufferMessage  "psp1"
+__sharedmemory::bufferMessage  "psp2"
+__sharedmemory::bufferMessage  "psp3"
+__sharedmemory::bufferMessage  "psp4"
+__sharedmemory::bufferMessage  "shaparak"
+__sharedmemory::bufferMessage  "b2"
+__sharedmemory::bufferMessage  "b3"
+__sharedmemory::bufferMessage  "b4"
+__sharedmemory::bufferMessage  "shetab"
+Send transaction to next node  "127.0.0.1" 5239
+__sharedmemory::bufferMessage  "shetab"
+Enter parseMessage 
+createNewTransaction  4
+completeFlow is_new_transaction  false 3 4
+__sharedmemory::releaseBuffer 
+
+Enter createNewBlock
+proofOfWork: 564   eTimer: 0.006  sec
+Enter generateBlockString 
+
+slot_showBlock2User  0
+
+Block info:
+ "{\"count\":4,\"data\":[{\"amount\":1000,\"node_id\":201,\"node_type\":1,\"receiver\":\"b\",\"sender\":\"a\"},{\"amount\":1000,\"node_id\":1,\"node_type\":2,\"receiver\":\"b\",\"sender\":\"a\"},{\"amount\":1000,\"node_id\":1,\"node_type\":3,\"receiver\":\"b\",\"sender\":\"a\"},{\"amount\":1000,\"node_id\":1,\"node_type\":3,\"receiver\":\"b\",\"sender\":\"a\"}],\"hash\":\"d575ee3f074db5fe2e9da910be5d53bc8a54e79803bc68554ed33e67924af6f2\",\"index\":0,\"previousHash\":\"\",\"proof\":564,\"timestamp\":\"2019-08-12    23:10:32\"}"
+
+__sharedmemory timerEvent  1  +++++++  "{\"amount\":1000,\"card_number\":\"1234567890123456\",\"destination\":\"b\",\"merchant_number\":\"56\",\"new_transaction\":false,\"node_id\":1,\"node_type\":3,\"receive_time\":1565635229102,\"response_time\":1565635232540,\"source\":\"a\",\"terminal_number\":\"1234\"}"
+Enter parseMessage 
+createNewTransaction  1
+completeFlow is_new_transaction  false 3 4
+__sharedmemory::releaseBuffer 
+
+Enter createNewBlock
+proofOfWork: 84   eTimer: 0  sec
+Enter generateBlockString 
+
+slot_showBlock2User  1
+Block info:
+ "{\"count\":1,\"data\":[{\"amount\":1000,\"node_id\":1,\"node_type\":3,\"receiver\":\"b\",\"sender\":\"a\"}],\"hash\":\"6448474df043e57e3611ab0886963165ded91486ab28604efb7fa1ba992d61bd\",\"index\":1,\"previousHash\":\"d575ee3f074db5fe2e9da910be5d53bc8a54e79803bc68554ed33e67924af6f2\",\"proof\":84,\"timestamp\":\"2019-08-12    23:10:42\"}"
+

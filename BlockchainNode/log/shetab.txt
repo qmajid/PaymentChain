@@ -1,0 +1,85 @@
+Enter readConfigFile
+
+Connect to Data Base  SuccessFully
+CreateConnection  0
+connect  true
+Enter readNodesInfo 
+
+nodes count:  10
+listen on port: 5239 true
+init  "psp1-shetab"
+init  "psp2-shetab"
+init  "psp3-shetab"
+init  "psp4-shetab"
+init  "shaparak-shetab"
+init  "b1-shetab"
+init  "b2-shetab"
+init  "b3-shetab"
+init  "b4-shetab"
+getConfig()->nodeNumber:  3
+__staticvalue::getNodesInfo()  9 3 1 "shetab" 5239
+
+__sharedmemory timerEvent  1  +++++++  "{\"amount\":1000,\"card_number\":\"1234567890123456\",\"destination\":\"b\",\"merchant_number\":\"56\",\"new_transaction\":false,\"node_id\":201,\"node_type\":1,\"receive_time\":1565635229102,\"response_time\":1565635229103,\"source\":\"a\",\"terminal_number\":\"1234\"}"
+Enter parseMessage 
+createNewTransaction  1
+completeFlow is_new_transaction  false 1 3
+__sharedmemory::releaseBuffer 
+
+__sharedmemory timerEvent  2  +++++++  "{\"amount\":1000,\"card_number\":\"1234567890123456\",\"destination\":\"b\",\"merchant_number\":\"56\",\"new_transaction\":true,\"node_id\":1,\"node_type\":2,\"receive_time\":1565635229102,\"response_time\":1565635229395,\"source\":\"a\",\"terminal_number\":\"1234\"}<<>>{\"amount\":1000,\"card_number\":\"1234567890123456\",\"destination\":\"b\",\"merchant_number\":\"56\",\"new_transaction\":false,\"node_id\":1,\"node_type\":2,\"receive_time\":1565635229102,\"response_time\":1565635229395,\"source\":\"a\",\"terminal_number\":\"1234\"}"
+Enter parseMessage 
+createNewTransaction  2
+completeFlow is_new_transaction  true 2 3
+------------ dispatch ----------------
+__sharedmemory::bufferMessage  "psp1"
+__sharedmemory::bufferMessage  "psp2"
+__sharedmemory::bufferMessage  "psp3"
+__sharedmemory::bufferMessage  "psp4"
+__sharedmemory::bufferMessage  "shaparak"
+__sharedmemory::bufferMessage  "b1"
+__sharedmemory::bufferMessage  "b2"
+__sharedmemory::bufferMessage  "b3"
+__sharedmemory::bufferMessage  "b4"
+Send transaction to next node  "127.0.0.1" 5300
+__sharedmemory::bufferMessage  "b1"
+Enter parseMessage 
+createNewTransaction  3
+completeFlow is_new_transaction  false 2 3
+__sharedmemory::releaseBuffer 
+
+Enter createNewBlock
+proofOfWork: 564   eTimer: 0.005  sec
+Enter generateBlockString 
+
+slot_showBlock2User  0
+
+Block info:
+ "{\"count\":3,\"data\":[{\"amount\":1000,\"node_id\":201,\"node_type\":1,\"receiver\":\"b\",\"sender\":\"a\"},{\"amount\":1000,\"node_id\":1,\"node_type\":2,\"receiver\":\"b\",\"sender\":\"a\"},{\"amount\":1000,\"node_id\":1,\"node_type\":2,\"receiver\":\"b\",\"sender\":\"a\"}],\"hash\":\"d9cb04a7d089a33777de97ba2151cd396a4ea5378bd5cc93ef3171873a4f2b12\",\"index\":0,\"previousHash\":\"\",\"proof\":564,\"timestamp\":\"2019-08-12    23:10:32\"}"
+__sharedmemory timerEvent  2  +++++++  "{\"amount\":1000,\"card_number\":\"1234567890123456\",\"destination\":\"b\",\"merchant_number\":\"56\",\"new_transaction\":true,\"node_id\":301,\"node_type\":4,\"receive_time\":1565635229102,\"response_time\":1565635231395,\"source\":\"a\",\"terminal_number\":\"1234\"}<<>>{\"amount\":1000,\"card_number\":\"1234567890123456\",\"destination\":\"b\",\"merchant_number\":\"56\",\"new_transaction\":false,\"node_id\":301,\"node_type\":4,\"receive_time\":1565635229102,\"response_time\":1565635231395,\"source\":\"a\",\"terminal_number\":\"1234\"}"
+Enter parseMessage 
+createNewTransaction  1
+completeFlow is_new_transaction  true 4 3
+------------ dispatch ----------------
+__sharedmemory::bufferMessage  "psp1"
+__sharedmemory::bufferMessage  "psp2"
+__sharedmemory::bufferMessage  "psp3"
+__sharedmemory::bufferMessage  "psp4"
+__sharedmemory::bufferMessage  "shaparak"
+__sharedmemory::bufferMessage  "b1"
+__sharedmemory::bufferMessage  "b2"
+__sharedmemory::bufferMessage  "b3"
+__sharedmemory::bufferMessage  "b4"
+Send transaction to next node  "127.0.0.1" 5238
+__sharedmemory::bufferMessage  "shaparak"
+Enter parseMessage 
+createNewTransaction  2
+completeFlow is_new_transaction  false 4 3
+__sharedmemory::releaseBuffer 
+
+Enter createNewBlock
+proofOfWork: 84   eTimer: 0  sec
+Enter generateBlockString 
+
+slot_showBlock2User  1
+Block info:
+ "{\"count\":2,\"data\":[{\"amount\":1000,\"node_id\":301,\"node_type\":4,\"receiver\":\"b\",\"sender\":\"a\"},{\"amount\":1000,\"node_id\":301,\"node_type\":4,\"receiver\":\"b\",\"sender\":\"a\"}],\"hash\":\"e61a9e9e9a3d42203db2f20b080b9db38d5d4234364e4f1645bb08f126e27a1c\",\"index\":1,\"previousHash\":\"d9cb04a7d089a33777de97ba2151cd396a4ea5378bd5cc93ef3171873a4f2b12\",\"proof\":84,\"timestamp\":\"2019-08-12    23:10:42\"}"
+

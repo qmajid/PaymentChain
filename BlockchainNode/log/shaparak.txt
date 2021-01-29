@@ -1,0 +1,52 @@
+__sharedmemory timerEvent  2  +++++++  "{\"amount\":1000,\"card_number\":\"1234567890123456\",\"destination\":\"b\",\"merchant_number\":\"56\",\"new_transaction\":true,\"node_id\":201,\"node_type\":1,\"receive_time\":1565635229102,\"response_time\":1565635229103,\"source\":\"a\",\"terminal_number\":\"1234\"}<<>>{\"amount\":1000,\"card_number\":\"1234567890123456\",\"destination\":\"b\",\"merchant_number\":\"56\",\"new_transaction\":false,\"node_id\":201,\"node_type\":1,\"receive_time\":1565635229102,\"response_time\":1565635229103,\"source\":\"a\",\"terminal_number\":\"1234\"}"
+Enter parseMessage 
+createNewTransaction  1
+completeFlow is_new_transaction  true 1 2
+------------ dispatch ----------------
+__sharedmemory::bufferMessage  "psp1"
+__sharedmemory::bufferMessage  "psp2"
+__sharedmemory::bufferMessage  "psp3"
+__sharedmemory::bufferMessage  "psp4"
+__sharedmemory::bufferMessage  "b1"
+__sharedmemory::bufferMessage  "b2"
+__sharedmemory::bufferMessage  "b3"
+__sharedmemory::bufferMessage  "b4"
+__sharedmemory::bufferMessage  "shetab"
+Send transaction to next node  "127.0.0.1" 5239
+__sharedmemory::bufferMessage  "shetab"
+Enter parseMessage 
+createNewTransaction  2
+completeFlow is_new_transaction  false 1 2
+__sharedmemory::releaseBuffer 
+
+__sharedmemory timerEvent  1  +++++++  "{\"amount\":1000,\"card_number\":\"1234567890123456\",\"destination\":\"b\",\"merchant_number\":\"56\",\"new_transaction\":false,\"node_id\":1,\"node_type\":3,\"receive_time\":1565635229102,\"response_time\":1565635230395,\"source\":\"a\",\"terminal_number\":\"1234\"}"
+Enter parseMessage 
+createNewTransaction  3
+completeFlow is_new_transaction  false 3 2
+__sharedmemory::releaseBuffer 
+
+Enter createNewBlock
+
+proofOfWork: 564   eTimer: 0.01  sec
+Enter generateBlockString 
+
+slot_showBlock2User  0
+
+Block info:
+ "{\"count\":3,\"data\":[{\"amount\":1000,\"node_id\":201,\"node_type\":1,\"receiver\":\"b\",\"sender\":\"a\"},{\"amount\":1000,\"node_id\":201,\"node_type\":1,\"receiver\":\"b\",\"sender\":\"a\"},{\"amount\":1000,\"node_id\":1,\"node_type\":3,\"receiver\":\"b\",\"sender\":\"a\"}],\"hash\":\"53c1f15484da10f3a2cdb0833a78197da7d06dec5d63074a9e4dd95c765a9a57\",\"index\":0,\"previousHash\":\"\",\"proof\":564,\"timestamp\":\"2019-08-12    23:10:32\"}"
+
+__sharedmemory timerEvent  2  +++++++  "{\"amount\":1000,\"card_number\":\"1234567890123456\",\"destination\":\"b\",\"merchant_number\":\"56\",\"new_transaction\":true,\"node_id\":1,\"node_type\":3,\"receive_time\":1565635229102,\"response_time\":1565635232540,\"source\":\"a\",\"terminal_number\":\"1234\"}<<>>{\"amount\":1000,\"card_number\":\"1234567890123456\",\"destination\":\"b\",\"merchant_number\":\"56\",\"new_transaction\":false,\"node_id\":1,\"node_type\":3,\"receive_time\":1565635229102,\"response_time\":1565635232540,\"source\":\"a\",\"terminal_number\":\"1234\"}"
+Enter parseMessage 
+createNewTransaction  1
+completeFlow is_new_transaction  true 3 2
+------------ dispatch ----------------
+__sharedmemory::bufferMessage  "psp1"
+__sharedmemory::bufferMessage  "psp2"
+__sharedmemory::bufferMessage  "psp3"
+__sharedmemory::bufferMessage  "psp4"
+__sharedmemory::bufferMessage  "b1"
+__sharedmemory::bufferMessage  "b2"
+__sharedmemory::bufferMessage  "b3"
+__sharedmemory::bufferMessage  "b4"
+__sharedmemory::bufferMessage  "shetab"
+
